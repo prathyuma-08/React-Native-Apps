@@ -1,23 +1,18 @@
-import React from "react";
-import {View,Text,StyleSheet} from 'react-native';
-import colors from "./assets/colors/colors";
-import Icon from 'react-native-vector-icons/Ionicons';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './components/Home';
 
-export default function App(){
-  return(
-    <View>
-      <Text style={styles.text}>
-        Hello Everyone!
-      </Text>
-      <Icon name="rocket" size={30} color='blue'/>
-    </View>
+const Stack = createNativeStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  text:{
-    fontSize: 20,
-    fontFamily: 'Montserrat-Bold',
-    color: colors.price
-  }
-})
+export default App;
