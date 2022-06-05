@@ -133,7 +133,8 @@ const styles = StyleSheet.create({
         height: 60,
         marginTop: 24,
         alignSelf: 'center',
-        marginHorizontal: 20
+        marginHorizontal: 20,
+        resizeMode: 'contain'
     },
     categoryItemTitle:{
         textAlign: 'center',

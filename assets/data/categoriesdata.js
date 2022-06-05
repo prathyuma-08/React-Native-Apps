@@ -19,13 +19,13 @@ const categoriesData = [
     },
     {
         id:4,
-        image: require('../images/soda-icon.png'),
+        image: require('../images/burger-icon.png'),
         title: 'Burgers',
         selected: false
     },
     {
         id:5,
-        image: require('../images/soda-icon.png'),
+        image: require('../images/fries-icon.png'),
         title: 'Fries',
         selected: true
     }
