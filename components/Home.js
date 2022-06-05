@@ -1,12 +1,17 @@
 import React,{useState} from "react";
-import { View, Text, StyleSheet, Image, TextInput, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, TextInput, FlatList, Modal, TouchableOpacity } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../assets/colors/colors';
 import categoriesData from "../assets/data/categoriesdata";
 import popularData from "../assets/data/populardata";
 
-export default function HomeScreen() {   
+export default function HomeScreen({navigation}) {   
+
+    const [modalVisible, setModalVisible] = useState(false);
+    const onClick = () =>{
+        setModalVisible(!modalVisible);
+    }
       
     const renderCategoryItem=({item})=>{
         return(
@@ -34,8 +39,18 @@ export default function HomeScreen() {
     return (
         <View style={styles.container}>
             <View style={styles.header}>
+            <Modal animationType='fade' transparent={false} visible={modalVisible} onRequestClose={onClick}>
+            <View style={styles.modalContainer}>
+            <TouchableOpacity onPress={onClick}>
+                <Feather style={styles.xWrapper} name="x" size = {40} color='black'/>
+                </TouchableOpacity>              
+                <Image style={styles.modalImage} source={require('../assets/images/profile.png')} />                 
+                </View>
+                </Modal>
+                <TouchableOpacity onPress={onClick}>
                 <Image source={require('../assets/images/profile.png')}
                     style={styles.profile} />
+                </TouchableOpacity>
                 <Feather name="menu" size={24} color={colors.textDark} />
             </View>
             <View style={styles.titleWrapper}>
@@ -59,6 +74,7 @@ export default function HomeScreen() {
                         />
                 </View>
             </View>
+            
         </View>
     );
     }
@@ -154,4 +170,20 @@ const styles = StyleSheet.create({
     categorySelectIcon:{
         alignSelf: 'center'
     },
+    modalContainer:{
+        flex: 1,
+        justifyContent: 'center',
+    },
+    modalImage:{
+        height: 300,
+        width: 300,
+        borderRadius: 300,
+        alignSelf: 'center',
+        borderWidth: 5,
+        borderColor: colors.textDark
+    },
+    xWrapper:{
+        paddingHorizontal: 20,
+        alignSelf: 'flex-end'
+    }
 })
