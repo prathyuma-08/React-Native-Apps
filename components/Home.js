@@ -1,10 +1,11 @@
 import React,{useState} from "react";
-import { View, Text, StyleSheet, Image, TextInput, FlatList, Modal, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image,ScrollView, TextInput, FlatList, Modal, TouchableOpacity } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from '../assets/colors/colors';
 import categoriesData from "../assets/data/categoriesdata";
 import popularData from "../assets/data/populardata";
+import PopularCard from "./PopularCard";
 
 export default function HomeScreen({navigation}) {   
 
@@ -38,6 +39,7 @@ export default function HomeScreen({navigation}) {
     };
     return (
         <View style={styles.container}>
+            <ScrollView contentInsetAdjustmentBehavior="automatic" showsVerticalScrollIndicator={false}>
             <View style={styles.header}>
             <Modal animationType='fade' transparent={false} visible={modalVisible} onRequestClose={onClick}>
             <View style={styles.modalContainer}>
@@ -74,7 +76,8 @@ export default function HomeScreen({navigation}) {
                         />
                 </View>
             </View>
-            
+            <PopularCard/>
+            </ScrollView>
         </View>
     );
     }
@@ -142,7 +145,15 @@ const styles = StyleSheet.create({
     categoryItemWrapper:{
         backgroundColor: colors.primary,
         marginRight: 20,
-        borderRadius: 20
+        borderRadius: 20,
+        shadowColor: 'black',
+        shadowOffset:{
+            width:0,
+            height: 2
+        },
+        shadowOpacity: 0.05,
+        shadowRadius: 10,
+        shadowOpacity: 2
     },
     categoryItemImage:{
         width: 60,
