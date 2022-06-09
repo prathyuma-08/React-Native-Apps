@@ -1,10 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import { View, Text, StyleSheet, Image, FlatList, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import colors from "../assets/colors/colors";
 
+
+
 export default function Details({route,navigation}){
+    const[liked,setliked] = useState(false);  
+const onClick = ()=>{
+    setliked(!liked);
+}
+
     const {item} = route.params;
     const renderIngredientsItem=({item})=>{
         return(
@@ -23,9 +30,9 @@ export default function Details({route,navigation}){
                 <Feather name="chevron-left" size={12} color={colors.textDark}/>
                </View>
                </TouchableOpacity>
-               <View style={styles.headerRight}>
-                   <MaterialCommunityIcons name="star" size={12} color='white' />
-               </View>
+               <TouchableOpacity onPress={onClick} style={styles.headerRight}>
+                   <MaterialCommunityIcons name="star" size={12} color={liked?'red':'white'}/>
+               </TouchableOpacity>
            </View>
            <View style={styles.titleWrapper}>
             <Text style={styles.title}>{item.title}</Text>
