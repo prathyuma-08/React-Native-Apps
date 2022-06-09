@@ -13,14 +13,14 @@ export default function HomeScreen({navigation}) {
         setModalVisible(!modalVisible);
     }
       
-    const renderCategoryItem=({item})=>{
+    const renderCategoryItem=({item})=>{        
         return(
             <>
             <TouchableOpacity style={[styles.categoryItemWrapper,
             {
                 backgroundColor: item.selected ? colors.primary : 'white',
                 marginLeft: item.id == 1 ? 20:0,
-            }]}>
+            }]} onPress={()=>navigation.navigate('Categories',{item:item})}>
             <Image style={styles.categoryItemImage} source={item.image}/>
             <Text style={styles.categoryItemTitle}>{item.title}</Text>
             <View style={[styles.categorySelectWrapper,
