@@ -1,28 +1,6 @@
 # FoodAppUI
 
-## Installing dependencies
-
-**STACK NAVIGATOR**
-
-Stack navigation used to navigate between the screens where each new screen is placed on the top of a stack.
-
-Install [Stack Navigation](https://reactnavigation.org/docs/stack-navigator/) using the commands:
-```
-npm install @react-navigation/native
-npm install react-native-screens react-native-safe-area-context
-npm install @react-navigation/stack
-npm install react-native-gesture-handler
-```
-
-**REACT NATIVE VECTOR ICONS**
-
-Perfect for buttons, logos and nav/tab bars. Easy to extend, style and integrate into your project.
-
-Install [Vector Icons](https://www.npmjs.com/package/react-native-vector-icons) using the command:
-```
-npm install --save react-native-vector-icons
-react-native link react-native-vector-icons
-```
+A food app UI which is inspired from figma[https://www.figma.com/file/gfIboy4J44lvD9CoDr62rH/Food-App?node-id=0%3A1]
 
 ## Screenshots of the App
 
