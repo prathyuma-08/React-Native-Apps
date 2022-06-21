@@ -1,6 +1,6 @@
 # FoodAppUI
 
-A food app UI which is inspired from figma[https://www.figma.com/file/gfIboy4J44lvD9CoDr62rH/Food-App?node-id=0%3A1]
+A food app UI which is inspired from [figma](https://www.figma.com/file/gfIboy4J44lvD9CoDr62rH/Food-App?node-id=0%3A1)
 
 ## Screenshots of the App
 
