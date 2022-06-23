@@ -1,50 +1,73 @@
- import React from 'react';
- import {View,Text,StyleSheet,Image} from 'react-native';
+import React from 'react';
+import {Dimensions,View, Text, StyleSheet, Image } from 'react-native';
+import {ChartDot, ChartPath, ChartPathProvider} from '@rainbow-me/animated-charts';
 
- const Chart=({
-    currentPrice, logoUrl,symbol,name,priceChange,sparkLine
- })=>{
-    console.log(sparkLine)
-    return(
-        <View style={styles.chartWrapper}>
-            <View style={styles.titleWrapper}>
-                <View style={styles.upperTitles}>
-                    <View style={styles.upperLeftTitle}>
-                        <Image source={{uri:logoUrl}} style={styles.image}/>
-                        <Text style={styles.subtitle}>{name} {{symbol}}</Text>
+export const {width: SIZE} = Dimensions.get('window');
+const Chart = ({
+    currentPrice, logoUrl, symbol, name, priceChange, sparkLine
+}) => {
+    
+    const priceChangecolor = priceChange > 0 ? '#34C759' : '#FF3B30';
+    return (
+        <ChartPathProvider data={{ points: sparkLine, smoothingStrategy: 'bezier' }}>
+            <View style={styles.chartWrapper}>
+                <View style={styles.titleWrapper}>
+                    <View style={styles.upperTitles}>
+                        <View style={styles.upperLeftTitle}>
+                            <Image source={{ uri: logoUrl }} style={styles.image} />
+                            <Text style={styles.subtitle}>{name} {symbol.toUpperCase()}</Text>
+                        </View>
+                        <Text style={styles.subtitle}>7d</Text>
                     </View>
-                    <Text style={styles.subtitle}>7d</Text>
+                    <View style={styles.lowerTitles}>
+                        <Text style={styles.boldTitle}>${currentPrice}</Text>
+                        <Text style={[styles.title, { color: priceChangecolor }]}>{priceChange.toFixed(2)}%</Text>
+                    </View>
                 </View>
-                <View style={styles.lowerTitles}>
-                    <Text style={styles.boldTitle}>${currentPrice}</Text>
-                    <Text style={styles.title}>{priceChange.toFixed(2)}%</Text>
-                </View>
+                <ChartPath height={SIZE / 2} stroke="yellow" width={SIZE} />
+                <ChartDot style={{ backgroundColor: 'blue' }} />
             </View>
-        </View>
-        );
- }
- const styles=StyleSheet.create({
-    chartWrapper:{
+        </ChartPathProvider>
+    );
+}
+const styles = StyleSheet.create({
+    chartWrapper: {
         margin: 16
     },
-    titleWrapper:{
+    titleWrapper: {
 
     },
-    upperTitles:{
+    upperTitles: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-    upperLeftTitle:{},
-    image:{},
-    subtitle:{},
-    lowerTitles:{
+    upperLeftTitle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    image: {
+        width: 24,
+        height: 24,
+        marginRight: 4
+    },
+    subtitle: {
+        fontSize: 14,
+        color: '#A9ABB1'
+    },
+    lowerTitles: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center'
     },
-    boldTitle:{},
-    title:{},        
- })
+    boldTitle: {
+        fontSize: 24,
+        color: '#000',
+        fontWeight: 'bold'
+    },
+    title: {
+        fontSize: 18,
+    },
+})
 
- export default Chart;
+export default Chart;
