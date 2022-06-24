@@ -17,7 +17,7 @@ const discoverData = [
       title: 'Hiking the Grand Canyon',
       location: 'USA',
       image: require('../images/canyon.png'),
-      imageBig: require('../images/canyon-big.png'),
+      imageBig: require('../images/canyon-1.png'),
       description:
         'Great day hikes and backpacking routes on the North and South Rim of this century-old national park include easy hikes overlooking the rim and more rugged trekking options that descend into the canyon.',
       liked: true,
