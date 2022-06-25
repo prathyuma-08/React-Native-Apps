@@ -1,6 +1,6 @@
 const discoverData = [
     {
-      id: 'discover-1',
+      id: '1',
       title: 'Kayaking in the Tofino Sea',
       location: 'Canada',
       image: require('../images/kayak.png'),
@@ -13,7 +13,7 @@ const discoverData = [
       duration: 2,
     },
     {
-      id: 'discover-2',
+      id: '2',
       title: 'Hiking the Grand Canyon',
       location: 'USA',
       image: require('../images/canyon.png'),
