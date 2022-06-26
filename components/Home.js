@@ -4,7 +4,6 @@ import colors from '../assets/colors/colors';
 import Feather from 'react-native-vector-icons/Feather';
 import Entypo from 'react-native-vector-icons/Entypo';
 import activitiesData from '../assets/data/activitiesData';
-import discoverCategoriesData from '../assets/data/discoverCategoriesData';
 import learnMoreData from '../assets/data/learnMoreData';
 import discoverData from '../assets/data/discoverData';
 import profile from '../assets/images/person.png';
@@ -177,7 +176,7 @@ const styles = StyleSheet.create({
         marginRight: 20
     },
     activityImage: {
-        marginTop: 10,
+        marginTop: 20,
         width: 36
     },
     activityText: {
