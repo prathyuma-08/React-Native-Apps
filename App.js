@@ -1,17 +1,28 @@
-import React, { useRef, useMemo, useState } from 'react';
+import React, { useRef, useMemo,useEffect, useState } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import ListItem from './components/ListItem';
 import Chart from './components/Chart';
-import { SAMPLE_DATA } from './assets/sampleData';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModal, BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { getMarketData } from './API/crypto';
 
 export default function App() {
+
+  const [data,setData] = useState([]);
+
+  useEffect(()=>{
+      const fetchMarketData = async () =>{
+        const marketData = await getMarketData();
+        setData(marketData);
+      }
+      fetchMarketData();
+    },[]
+  )
 
   const [selectedCoin, setSelectedCoin] = useState(null);
 
   const bottomSheetModalRef = useRef(null);
-  const snapPoints = useMemo(() => ['50%'], []);
+  const snapPoints = useMemo(() => ['45%'], []);
 
   const openModal = (item) => {
     setSelectedCoin(item);
@@ -27,8 +38,10 @@ export default function App() {
         </View>
         <View style={styles.divider} />
         <FlatList
+        style={styles.list}
+          showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item.id}
-          data={SAMPLE_DATA}
+          data={data}
           renderItem={
             ({ item }) => (
               <ListItem
@@ -53,9 +66,9 @@ export default function App() {
             logoUrl={selectedCoin.image}
             symbol={selectedCoin.symbol}
             name={selectedCoin.name}
-            priceChange={selectedCoin.price_change_percentage_7d_in_currency}
-            sparkLine={selectedCoin.sparkline_in_7d.price} />
-        ) : null}
+            priceChange={selectedCoin.price_change_percentage_7d_in_currency}/>)
+            : null}
+            {/* // sparkLine={selectedCoin.sparkline_in_7d.price}          */}
       </BottomSheetModal>
     </BottomSheetModalProvider>
     </GestureHandlerRootView>
@@ -83,13 +96,13 @@ const styles = StyleSheet.create({
     marginTop: 16,
   },
   bottomSheet: {
-    shadowColor: '#000000',
+    shadowColor: 'black',
     shadowOffset: {
-      width: 40,
-      height: 80
+      width: 100,
+      height: 100
     },
-    shadowOpacity: 1,
+    shadowOpacity: 0.4,
     shadowRadius: 8,
-    elevation: 10,
-  }
+    elevation: 100,
+  },
 })

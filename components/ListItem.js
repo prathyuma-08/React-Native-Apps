@@ -6,7 +6,9 @@ export default function ListItem({name,symbol,currentPrice, priceChange, logoUrl
     const priceChangecolor = priceChange>0?'#34C759':'#FF3B30';
     return(
         <TouchableOpacity onPress={onPress}>
-            <View style={styles.itemWrapper}>
+            <View style={[styles.itemWrapper,{
+                marginBottom: name=="Litecoin"?20:0
+            }]}>
                 <View style={styles.leftWrapper}>
                     <Image source={{uri: logoUrl}}
                     style={styles.image}/>
@@ -16,7 +18,7 @@ export default function ListItem({name,symbol,currentPrice, priceChange, logoUrl
                     </View>
                 </View>
                 <View style={styles.rightWrapper}>
-                <Text style={styles.title}>${currentPrice}</Text>
+                <Text style={styles.title}>${currentPrice.toFixed(3)}</Text>
                     <Text style={[styles.subtitle,{color:priceChangecolor}]}>{priceChange.toFixed(2)}%</Text>
                 </View>
             </View>

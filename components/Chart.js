@@ -9,7 +9,7 @@ const Chart = ({
     
     const priceChangecolor = priceChange > 0 ? '#34C759' : '#FF3B30';
     return (
-        <ChartPathProvider data={{ points: sparkLine, smoothingStrategy: 'bezier' }}>
+
             <View style={styles.chartWrapper}>
                 <View style={styles.titleWrapper}>
                     <View style={styles.upperTitles}>
@@ -20,14 +20,13 @@ const Chart = ({
                         <Text style={styles.subtitle}>7d</Text>
                     </View>
                     <View style={styles.lowerTitles}>
-                        <Text style={styles.boldTitle}>${currentPrice}</Text>
+                        <Text style={styles.boldTitle}>${currentPrice.toFixed(3)}</Text>
                         <Text style={[styles.title, { color: priceChangecolor }]}>{priceChange.toFixed(2)}%</Text>
                     </View>
                 </View>
-                <ChartPath height={SIZE / 2} stroke="yellow" width={SIZE} />
-                <ChartDot style={{ backgroundColor: 'blue' }} />
+                
             </View>
-        </ChartPathProvider>
+
     );
 }
 const styles = StyleSheet.create({
