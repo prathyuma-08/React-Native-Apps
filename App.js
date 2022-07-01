@@ -1,6 +1,6 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import {View,Text,StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import Home from './components/Home';
 import Details from './components/Details';
 import Liked from './components/Liked';
