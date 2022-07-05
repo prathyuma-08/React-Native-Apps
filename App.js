@@ -1,21 +1,22 @@
-import React from "react";
-import {View,Text,StyleSheet,Image} from 'react-native';
-import colors from "./assets/colors/colors";
+import React, { useState } from "react";
+import Onboard from "./components/Onboard";
+import Home from "./components/Home";
 
-export default function App(){
-  return(
-    <View >
-      <Text style={styles.head}>Hello How are you</Text>
-      <Text style={{fontSize: 32}}>Hello How are you</Text>
-      <Image source={require('./assets/images/Onboard1.png')} style={{height: 300, width: 300}}/>
-    </View>
+export default function App() {
+
+  const [showOnBoard, setShowOnboard] = useState(true);
+  const handleOnboardFinish = () => {
+    setShowOnboard(false);
+  }
+
+  return (
+    <>
+      {
+        showOnBoard && <Onboard handleDone={handleOnboardFinish} />
+      }
+      {
+        !showOnBoard && <Home />
+      }
+    </>
   );
 }
-
-const styles = StyleSheet.create({
-  head:{
-    fontFamily: 'OpenSans-Regular',
-    fontSize:32,
-    color: colors.blue
-  }
-})
