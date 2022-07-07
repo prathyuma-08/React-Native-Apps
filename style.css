@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f2f5;
+    position: relative;
+    height: 115vh;
+    overflow-x: hidden;
+}
+
+#container {
+    display: flex;
+
+}
+
+#recent-logins {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    left: 20vw;
+    top: 13vh;
+    margin-right: 30vw;
+}
+
+#facebook {
+    height: 70px;
+    width: 198px;
+    margin: -20px;
+}
+
+#recent-logins>#title {
+    font-size: 28px;
+    font-weight: normal;
+    line-height: 32px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+
+#recent-logins>#subtitle {
+    color: #606770;
+    font-size: 15px;
+    line-height: 15px;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+#cards {
+    display: flex;
+}
+
+#card-1,
+#card-2 {
+    position: relative;
+    background-color: white;
+    margin-right: 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+#card-1:hover,
+#card-2:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+}
+
+#card-1-img,
+#card-2-img {
+    height: 160px;
+    width: 160px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#add-account {
+    color: #166fe5;
+}
+
+.username {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 12px;
+    text-align: center;
+    color: rgb(75, 79, 86);
+}
+
+#cancel{
+    position: absolute;
+    left: 8px;
+    color: white;
+    top: 5px;
+    border-radius: 50%;
+    height: 20px;
+    text-align: center;
+    width: 20px;
+    background-color: rgb(63,62,62);
+    opacity: 0.5;
+}
+
+#card-1:hover #cancel{
+    background-color: white;
+    opacity: 1;
+    color: rgb(194,193,193);
+    height: 25px;
+    width: 25px;
+    line-height: 22px;
+    top: -5px;
+    left: -5px;
+    font-size: 25px;
+    transition: 0.3s;
+}
